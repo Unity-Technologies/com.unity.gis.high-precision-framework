@@ -1,0 +1,20 @@
+# For more information about the available options please visit: http://go/backstage (VPN required)
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  annotations:
+    github.com/project-slug: Unity-Technologies/com.unity.gis.high-precision-framework.rc
+  name: com.unity.gis.high-precision-framework.rc
+  description: "This high precision framework is a package which allows for the easy creation of large-scale visualizations. It has the ambition of solving problems outside of the pure geospatial streaming applications."
+  labels:
+    costcenter: "5029"
+  tags:
+    - planned-public
+  links:
+    - url: https://unity.slack.com/messages/C01RU3BHA3S/
+      title: "#aa-geospatial-devs"
+      icon: chat
+spec:
+  type: unity-package
+  lifecycle: experimental
+  owner: unity-technologies/dt-members
