@@ -3,8 +3,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   annotations:
-    github.com/project-slug: Unity-Technologies/com.unity.gis.high-precision-framework.rc
-  name: com.unity.gis.high-precision-framework.rc
+    github.com/project-slug: Unity-Technologies/com.unity.gis.high-precision-framework
+  name: com.unity.gis.high-precision-framework
   description: "This high precision framework is a package which allows for the easy creation of large-scale visualizations. It has the ambition of solving problems outside of the pure geospatial streaming applications."
   labels:
     costcenter: "5029"
