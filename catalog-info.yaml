@@ -17,4 +17,4 @@ metadata:
 spec:
   type: unity-package
   lifecycle: experimental
-  owner: unity-technologies/dt-members
+  owner: unity-technologies/dt-3d-data-streaming
