@@ -1,0 +1,16 @@
+name: CODEOWNERS validator
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      # we trigger validation on any changes to the CODEOWNERS file
+      - .github/CODEOWNERS
+
+jobs:
+  validate:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/codeowners-validator@7f3f5e28c6d7b8dfae5731e54ce2272ca384592f
+        with:
+          checks: "syntax,files,duppatterns"

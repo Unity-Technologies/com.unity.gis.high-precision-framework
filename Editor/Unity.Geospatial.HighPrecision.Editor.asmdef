@@ -1,0 +1,19 @@
+{
+    "name": "Unity.Geospatial.HighPrecision.Editor",
+    "rootNamespace": "Unity.Geospatial.HighPrecision.Editor",
+    "references": [
+        "Unity.Geospatial.HighPrecision",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

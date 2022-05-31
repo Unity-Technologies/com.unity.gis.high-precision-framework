@@ -1,0 +1,262 @@
+name: Update Version On Release.md
+
+on:
+  # Triggers the workflow on release push tag
+  push:
+    tags:
+      - 'r*.*.*'
+    branches:
+      - '!master'
+
+permissions:
+  actions : write
+  checks : write
+  contents : write
+  deployments : write
+  issues : write
+  packages : write
+  pull-requests : write
+  repository-projects : write
+  security-events : write
+  statuses : write
+
+jobs:
+  update_and_push:
+    runs-on: [ self-hosted, linux ]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set Git Config
+        run: |
+          git config --global user.name 'DT Platform Datavis CI'
+          git config --global user.email 'dt-platform-datavis-ci-noreply@unity3d.com'
+          git remote set-url origin https://github:${{ secrets.GITHUB_TOKEN }}@github.cds.internal.unity3d.com/${{ github.repository }}
+          
+      - name: Get current date
+        id: date
+        run: |
+          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo DATE = $(date +'%Y-%m-%d')
+          
+      - name: Tag Match
+        id: tag-match
+        shell: bash
+        run: |
+          if [[ ${{ github.event.ref }} =~ ^refs\/tags\/([rR](elease)?[\.-]?([0-9]+\.[0-9]+\.[0-9]+(-.*\.[0-9])))$ ]]; then
+              echo ::set-output name=tag::${BASH_REMATCH[1]}
+              echo ::set-output name=version::${BASH_REMATCH[3]}
+              echo TAG = ${BASH_REMATCH[1]}
+              echo VERSION = ${BASH_REMATCH[3]}
+              echo ::set-output name=rc::rc-${BASH_REMATCH[3]}
+              git tag -l | xargs git tag -d
+              git fetch --tags
+              echo ::set-output name=origin::$(git tag -l rc-${BASH_REMATCH[3]})
+          fi
+          
+      - name: Validate Tag
+        if: ${{ (steps.tag-match.outputs.tag != '') && (steps.tag-match.outputs.origin != '') }}
+        run: |
+          echo A tag named ${{ steps.tag-match.outputs.rc }} already exist. Increment the version to fix this.
+          git push --delete origin ${{ steps.tag-match.outputs.tag }}
+          exit 1
+
+      - name: Branch Name Is Develop
+        id: get-branch-dev
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git fetch
+          echo ::set-output name=branch::$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex '^.*origin/develop.*$')
+
+      - name: Branch Name Is Other
+        id: get-branch-other
+        if: ${{ (steps.tag-match.outputs.tag != '') && (steps.get-branch-dev.outputs.branch == '') }}
+        run: |
+          echo ::set-output name=branch::$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex 'origin\/[^ H]+' | sed -E 's/.*origin\/([^ ]+).*/\1/')
+
+      - name: Get Branch Name
+        id: get-branch
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          if [[ '${{ steps.get-branch-dev.outputs.branch }}' == '' ]]; then
+            echo ::set-output name=branch::${{ steps.get-branch-other.outputs.branch }}
+          else
+            echo ::set-output name=branch::develop
+          fi
+          echo ::set-output name=changelog::changelog-${{ steps.tag-match.outputs.version }}
+          echo ::set-output name=staging::staging-${{ steps.tag-match.outputs.version }}
+
+      - name: Changelog branch
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: |
+          git checkout -b ${{ steps.get-branch.outputs.changelog }}
+          
+      - name: Checkout the current branch
+        if: ${{ (steps.get-branch.outputs.branch != 'develop') && (steps.tag-match.outputs.tag != '') }}
+        run: |
+          git checkout ${{ steps.get-branch.outputs.branch }}
+          git pull
+          
+      - name: Update CHANGELOG.md
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: sed -i "s/\\[\\\$ReleasedVersion\\\$\\]/[\$ReleasedVersion\$]\r\n### Added\r\n### Modified\r\n### Fix\r\n\r\n## [${{ steps.tag-match.outputs.version }}] - ${{ steps.date.outputs.date }}/" CHANGELOG.md
+
+      - name: Commit the changes
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git add CHANGELOG.md
+          git commit -m "[skip ci] Updated CHANGELOG.md for ${{ steps.tag-match.outputs.version }}"
+          
+      - name: Push Changelog Branch
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: git push -f --set-upstream origin ${{ steps.get-branch.outputs.changelog }}
+               
+      - name: Create Changelog Pull Request
+        id: pr-changelog
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: |
+          echo ::set-output name=number::$(curl -i \
+          --request POST \
+          --header 'authorization: bearer ${{ secrets.GITHUB_TOKEN }}' \
+          --header 'content-type: application/json' \
+          https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls \
+          --data '{"title":"CHANGELOG ${{ steps.tag-match.outputs.version }}", "body":"This PR is auto-generated by workflow/update-version-on-release", "head":"${{ steps.get-branch.outputs.changelog }}", "base":"${{ steps.get-branch.outputs.branch }}"}' \
+          | grep -o "\"issue_url\":.*/[0-9]"".*" \
+          | sed -E 's/.*\/([0-9]+)",.*/\1/')  
+          
+      - name: Validate Changelog Pull Request
+        if: ${{ (steps.get-branch.outputs.branch == 'develop') && (steps.pr-changelog.outputs.number == '') }}
+        run: |
+          echo Invalid Pull Request Creation
+          exit 2
+
+      - name: Approve the Changelog Pull Request
+        id: approve-changelog
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: |
+          echo ::set-output name=approved::$(curl --request POST \
+          --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-changelog.outputs.number }}/reviews \
+          --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
+          --header 'content-type: application/json' \
+          --data '{"event":"APPROVE"}' \
+          | grep -o '.*"state": *"APPROVED".*')
+
+      - name: Validate Changelog Pull Request State
+        if: ${{ (steps.get-branch.outputs.branch == 'develop') && (steps.approve-changelog.outputs.approved == '') }}
+        run: |
+          echo Could not approve the PR
+          exit 3
+
+      - name: Checkout the current branch
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: |
+          git checkout ${{ steps.get-branch.outputs.branch }}
+          git pull
+
+      - name: Push the changes to develop
+        id: push-develop
+        if: ${{ steps.get-branch.outputs.branch == 'develop' }}
+        run: |
+          echo ::set-output name=success::$(curl --request PUT \
+          --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-changelog.outputs.number }}/merge \
+          --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
+          --header 'content-type: application/json' \
+          | grep -o '.*"merged": *true.*')
+
+      - name: Push the changes to the current branch
+        if: ${{ (steps.tag-match.outputs.tag != '') && (steps.get-branch.outputs.branch != 'develop')  }}
+        run: git push
+
+      - name: Validate Push to the current branch
+        if: ${{ (steps.get-branch.outputs.branch == 'develop') && (steps.push-develop.outputs.success == '') }}
+        run: |
+          echo Could not push the PR
+          exit 4
+
+      - name: Go back to the original commit
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git pull
+          git checkout $GITHUB_SHA
+
+      - name: Create a branch to merge
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git fetch origin
+          git checkout -b ${{ steps.get-branch.outputs.staging }}
+
+      - name: Update package.json
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: >
+          sed -i "s/\"version\": \"0.0.0\"/\"version\": \"${{ steps.tag-match.outputs.version }}\"/g" package.json
+
+      - name: Update CHANGELOG.md
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: sed -i "s/\\[\\\$ReleasedVersion\\\$\\]/[${{ steps.tag-match.outputs.version }}] - ${{ steps.date.outputs.date }}/" CHANGELOG.md
+
+      - name: Update All Other Files
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: find . -type f -not -path '*/\.*' -exec sed -i "s/\\\$ReleasedVersion\\\$/v${{ steps.tag-match.outputs.version }}/g" {} +
+
+      - name: Create Staging
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git add .
+          git commit -m "[skip ci] Updated the package version to ${{ steps.tag-match.outputs.version }}"
+          git merge --strategy=ours origin/master --allow-unrelated-histories -m "Released Candidate ${{ steps.tag-match.outputs.version }}"
+          git push -f --set-upstream origin ${{ steps.get-branch.outputs.staging }}
+
+      - name: Create Master Pull Request
+        id: pr-master
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          echo ::set-output name=number::$(curl -i \
+          --request POST \
+          --header "authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
+          --header 'content-type: application/json' \
+          https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls \
+          --data '{"title":"Staging ${{ steps.tag-match.outputs.version }}", "body":"This PR is auto-generated by workflow/update-version-on-release", "head":"${{ steps.get-branch.outputs.staging }}", "base":"master"}' \
+          | grep -o "\"issue_url\":.*/[0-9]"".*" \
+          | sed -E 's/.*\/([0-9]+)",.*/\1/')
+          
+      - name: Validate Master Pull Request
+        if: ${{ (steps.tag-match.outputs.tag != '') && (steps.pr-master.outputs.number == '') }}
+        run: | 
+          echo Invalid Pull Request Creation
+          exit 5
+
+      - name: Approve the Master Pull Request
+        id: approve-master
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          echo ::set-output name=approved::$(curl --request POST \
+          --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-master.outputs.number }}/reviews \
+          --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
+          --header 'content-type: application/json' \
+          --data '{"event":"APPROVE"}' \
+          | grep -o '.*"state": *"APPROVED".*')
+
+      - name: Validate Master Pull Request State
+        if: ${{ (steps.tag-match.outputs.tag != '') && (steps.approve-master.outputs.approved == '') }}
+        run: |
+          echo Could not approve the PR
+          exit 6
+            
+      - name: Push the Changes to Master
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git checkout master
+          git pull
+          git merge ${{ steps.get-branch.outputs.staging }}
+          git pull
+          git push
+          
+      - name: Update Tags
+        if: ${{ steps.tag-match.outputs.tag != '' }}
+        run: |
+          git tag -a -f -m "Released Candidate ${{ steps.tag-match.outputs.version }}" ${{ steps.tag-match.outputs.rc }}
+          git push -f origin ${{ steps.tag-match.outputs.rc }}
+          git push --delete origin ${{ steps.tag-match.outputs.tag }}

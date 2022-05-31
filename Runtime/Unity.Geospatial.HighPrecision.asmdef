@@ -1,0 +1,17 @@
+{
+    "name": "Unity.Geospatial.HighPrecision",
+    "rootNamespace": "Unity.Geospatial.HighPrecision",
+    "references": [
+        "Unity.Mathematics",
+        "Unity.Burst"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

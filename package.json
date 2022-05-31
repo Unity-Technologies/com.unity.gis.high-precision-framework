@@ -1,0 +1,22 @@
+{
+    "name": "com.unity.gis.high-precision-framework",
+    "version": "1.0.0-preview.2",
+    "displayName": "High Precision Framework",
+    "description": "This high precision framework is a package which allows for the easy creation of large-scale visualizations. It is being developed by the geospatial group in labs but has the ambition of solving problems outside of the pure geospatial streaming applications.",
+    "unity": "2020.3",
+    "unityRelease": "23f1",
+    "dependencies": {
+        "com.unity.mathematics": "1.2.5",
+        "com.unity.burst": "1.4.11"
+    },
+    "keywords": [
+        "precision",
+        "double",
+        "64bit"
+    ],
+    "author": {
+        "name": "Jonathan de Belle",
+        "email": "jonathan.debelle@unity3d.com",
+        "url": "https://www.unity3d.com"
+    }
+}

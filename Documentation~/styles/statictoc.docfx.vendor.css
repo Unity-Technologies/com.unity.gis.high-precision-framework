@@ -1,0 +1,16 @@
+/* 
+the statictoc doesn't replace logo.svg with an inline equivalent, due to CORS restriction,
+so we need to set the width and height in css instead.
+*/
+#logo {
+    width:100%;
+    height:100%;
+}
+
+/*
+Toc elements in the static toc don't word-break when the overflow the containing element
+(this should be the default behaviour) so we override the styling
+*/
+body .toc {
+    word-break: break-word;
+}
