@@ -12,8 +12,7 @@ namespace Unity.Geospatial.HighPrecision
     /// <summary>
     /// Represents an axis aligned bounding box with values stored as doubles.
     /// </summary>
-    [BurstCompile(CompileSynchronously = true)]
-    [Serializable]
+    [BurstCompile(CompileSynchronously = true), Serializable]
     public readonly struct DoubleBounds :
         IEquatable<DoubleBounds>,
         IFormattable
@@ -42,15 +41,15 @@ namespace Unity.Geospatial.HighPrecision
         /// </param>
         private DoubleBounds(double3 center, double3 extents, bool isEmpty)
         {
-            this.Center = center;
-            this.Extents = extents;
+            Center = center;
+            Extents = extents;
             IsEmpty = isEmpty;
         }
 
         /// <summary>
         /// Get a <see cref="DoubleBounds"/> instance that is considered empty (no position, no size).
-        /// </summary>
         /// <remarks>The empty bounds is preferred to the default when no content is required.</remarks>
+        /// </summary>
         public static DoubleBounds Empty
         {
             get
@@ -65,13 +64,11 @@ namespace Unity.Geospatial.HighPrecision
         /// <summary>
         /// The center of the bounding box.
         /// </summary>
-        [SerializeField]
         public readonly double3 Center;
 
         /// <summary>
         /// Distance between the center and the edges of the bounds.
         /// </summary>
-        [SerializeField]
         public readonly double3 Extents;
 
         /// <summary>
@@ -304,7 +301,7 @@ namespace Unity.Geospatial.HighPrecision
 
         /// <summary>
         /// Apply a <see cref="DoublePlane"/> to the original <see cref="DoubleBounds"/> then
-        /// translate / rotate / scale it according to the given <paramref name="transformMatrix"transformation matrix</paramref>.
+        /// translate / rotate / scale it according to the given <paramref name="transformMatrix">transformation matrix</paramref>.
         /// </summary>
         /// <param name="bounds">Instance to transform.</param>
         /// <param name="transformMatrix">Translate / Rotate / Resize the bounds by this matrix.</param>
@@ -413,6 +410,7 @@ namespace Unity.Geospatial.HighPrecision
         /// <summary>
         /// Returns a formatted string for the bounds.
         /// </summary>
+        /// <returns>The formatted string representing this instance.</returns>
         public override string ToString()
         {
             return ToString(null, CultureInfo.InvariantCulture.NumberFormat);
@@ -422,6 +420,7 @@ namespace Unity.Geospatial.HighPrecision
         /// Returns a formatted string for the bounds.
         /// </summary>
         /// <param name="format">A numeric format string.</param>
+        /// <returns>The formatted string representing this instance.</returns>
         public string ToString(string format)
         {
             return ToString(format, CultureInfo.InvariantCulture.NumberFormat);
@@ -432,6 +431,7 @@ namespace Unity.Geospatial.HighPrecision
         /// </summary>
         /// <param name="format">A numeric format string.</param>
         /// <param name="formatProvider">An object that specifies culture-specific formatting.</param>
+        /// <returns>The formatted string representing this instance.</returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             if (string.IsNullOrEmpty(format))

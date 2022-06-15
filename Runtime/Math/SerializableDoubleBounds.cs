@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -41,6 +39,7 @@ namespace Unity.Geospatial.HighPrecision
         /// Cast to <see cref="DoubleBounds"/>
         /// </summary>
         /// <param name="bounds">The <see cref="SerializableDoubleBounds"/> to be casted from</param>
+        /// <returns>A new <see cref="DoubleBounds"/> instance.</returns>
         public static explicit operator DoubleBounds(SerializableDoubleBounds bounds)
         {
             return new DoubleBounds(bounds.Center, 2.0 * bounds.Extents);
@@ -50,9 +49,26 @@ namespace Unity.Geospatial.HighPrecision
         /// Cast from <see cref="DoubleBounds"/>
         /// </summary>
         /// <param name="bounds">The <see cref="DoubleBounds"/> to be casted from</param>
+        /// <returns>A new <see cref="SerializableDoubleBounds"/> instance.</returns>
         public static explicit operator SerializableDoubleBounds(DoubleBounds bounds)
         {
             return new SerializableDoubleBounds(bounds);
+        }
+
+        /// <summary>
+        /// Convert a <see cref="SerializableDoubleBounds"/> instance to a new single precision Unity
+        /// <see href="https://docs.unity3d.com/ScriptReference/Bounds.html">Bounds</see> instance.
+        /// </summary>
+        /// <param name="bounds">The instance to convert.</param>
+        /// <returns>A new <see href="https://docs.unity3d.com/ScriptReference/Bounds.html">Bounds</see> instance.</returns>
+        public static explicit operator Bounds(SerializableDoubleBounds bounds)
+        {
+            Bounds result = default;
+
+            result.center = bounds.Center.ToVector3();
+            result.extents = bounds.Extents.ToVector3();
+
+            return result;
         }
     }
 }

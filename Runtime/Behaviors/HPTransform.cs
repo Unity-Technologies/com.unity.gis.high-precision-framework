@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -21,26 +20,8 @@ namespace Unity.Geospatial.HighPrecision
     [ExecuteAlways]
     [DisallowMultipleComponent]
     [AddComponentMenu("HighPrecision/HPTransform")]
-    public class HPTransform : MonoBehaviour, HPNode
+    public class HPTransform : HPNode
     {
-        /// <summary>
-        /// The type of scale that the HPNode's current configuration allows. When it is 
-        /// a leaf node, it will accept non-uniform scales. Otherwise, it will only apply
-        /// a uniform scale.
-        /// </summary>
-        public enum ScaleTypes
-        {
-            /// <summary>
-            /// A non uniform scale, which has an x, y and z component
-            /// </summary>
-            Anisotropic,
-
-            /// <summary>
-            /// A uniform scale, where only the x component is considered
-            /// </summary>
-            Isotropic
-        }
-        
         /// <summary>
         /// <see langword="true"/> if all of the fields where set at least once;
         /// <see langword="false"/> if the fields needs to be set before used.
@@ -65,13 +46,6 @@ namespace Unity.Geospatial.HighPrecision
         /// This node is used to calculate the <see cref="WorldMatrix"/>.
         /// </summary>
         private HPNode m_Parent;
-
-        /// <summary>
-        /// List of the child nodes of this instance. Those nodes will multiply their <see cref="LocalMatrix"/> by this
-        /// instance <see cref="UniverseMatrix"/> to get their <see cref="UniverseMatrix"/> and same thing for the
-        /// <see cref="WorldMatrix"/>.
-        /// </summary>
-        private readonly List<HPTransform> m_Children = new List<HPTransform>();
 
         /// <summary>
         /// Cache Unity's <see href="https://docs.unity3d.com/ScriptReference/Transform.html">Transform</see> to reduce overhead of retrieving it everytime.
@@ -167,7 +141,7 @@ namespace Unity.Geospatial.HighPrecision
         /// <summary>
         /// The position of the HPTransform relative to its parent HPRoot or HPTransform
         /// </summary>
-        public double3 LocalPosition
+        public override double3 LocalPosition
         {
             get { return m_LocalPosition; }
             set
@@ -181,9 +155,22 @@ namespace Unity.Geospatial.HighPrecision
         }
 
         /// <summary>
+        /// Set the position of the HPTransform relative to its parent HPRoot or HPTransform
+        /// </summary>
+        /// <param name="position">Change the <see cref="LocalPosition"/> to this value.</param>
+        public void SetLocalPosition(double3 position)
+        {
+            AssertIsValid(position);
+
+            m_LocalPosition = position;
+
+            InvalidateLocalCache();
+        }
+
+        /// <summary>
         /// The position of the HPTransform, in universe space.
         /// </summary>
-        public double3 UniversePosition
+        public override double3 UniversePosition
         {
             get
             {
@@ -206,7 +193,7 @@ namespace Unity.Geospatial.HighPrecision
         /// <summary>
         /// The rotation of the HPTransform relative to its parent HPTransform or HPRoot
         /// </summary>
-        public quaternion LocalRotation
+        public override quaternion LocalRotation
         {
             get { return m_LocalRotation; }
             set
@@ -222,7 +209,7 @@ namespace Unity.Geospatial.HighPrecision
         /// <summary>
         /// The rotation of the HPTransform, in universe space
         /// </summary>
-        public quaternion UniverseRotation
+        public override quaternion UniverseRotation
         {
             get
             {
@@ -256,7 +243,7 @@ namespace Unity.Geospatial.HighPrecision
         /// not a leaf node (i.e. if it contains another HPTransform) only uniform scales will be possible. Under
         /// these circumstances, only the x component of the scale will count towards the uniform scale.
         /// </summary>
-        public float3 LocalScale
+        public override float3 LocalScale
         {
             get
             {
@@ -322,15 +309,9 @@ namespace Unity.Geospatial.HighPrecision
                             ? ScaleTypes.Isotropic
                             : ScaleTypes.Anisotropic; }
         }
-        
-        /// <inheritdoc cref="HPNode.LocalMatrix"/>        
-        double4x4 HPNode.LocalMatrix
-        {
-            get { return LocalMatrix; }
-        }
 
         /// <inheritdoc cref="HPNode.LocalMatrix"/>
-        internal double4x4 LocalMatrix
+        public override double4x4 LocalMatrix
         {
             get
             {
@@ -342,15 +323,9 @@ namespace Unity.Geospatial.HighPrecision
                 return m_CachedLocalMatrix;
             }
         }
-        
-        /// <inheritdoc cref="HPNode.UniverseMatrix"/>        
-        double4x4 HPNode.UniverseMatrix
-        {
-            get { return UniverseMatrix; }
-        }
 
         /// <inheritdoc cref="HPNode.UniverseMatrix"/>
-        internal double4x4 UniverseMatrix
+        public override double4x4 UniverseMatrix
         {
             get
             {
@@ -368,13 +343,7 @@ namespace Unity.Geospatial.HighPrecision
         }
 
         /// <inheritdoc cref="HPNode.WorldMatrix"/>
-        double4x4 HPNode.WorldMatrix
-        {
-            get { return WorldMatrix; }
-        }
-
-        /// <inheritdoc cref="HPNode.WorldMatrix"/>
-        internal double4x4 WorldMatrix
+        public override double4x4 WorldMatrix
         {
             get
             {
@@ -657,7 +626,7 @@ namespace Unity.Geospatial.HighPrecision
         }
 
         /// <inheritdoc cref="HPNode.RegisterChild"/>
-        void HPNode.RegisterChild(HPTransform child)
+        public override void RegisterChild(HPTransform child)
         {
             //
             //  When first child is added, scale type transitions from
@@ -666,14 +635,14 @@ namespace Unity.Geospatial.HighPrecision
             if (m_Children.Count == 0)
                 InvalidateLocalCache();
 
-            m_Children.Add(child);
+            base.RegisterChild(child);
             UpdateUnityTransform();
         }
 
         /// <inheritdoc cref="HPNode.UnregisterChild"/>
-        void HPNode.UnregisterChild(HPTransform child)
+        public override void UnregisterChild(HPTransform child)
         {
-            m_Children.Remove(child);
+            base.UnregisterChild(child);
 
             //
             //  When last child is removed, scale type transitions from

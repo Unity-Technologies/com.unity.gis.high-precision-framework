@@ -215,6 +215,7 @@ namespace Unity.Geospatial.HighPrecision
         /// Returns a signed distance from plane to point.
         /// </summary>
         /// <param name="point">Get the distance from this point.</param>
+        /// <returns>The distance between this instance with the given <paramref name="point"/>.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public double GetDistanceToPoint(double3 point)
         {
@@ -257,6 +258,10 @@ namespace Unity.Geospatial.HighPrecision
         /// </summary>
         /// <param name="point0">First point to evaluate.</param>
         /// <param name="point1">Get if this second point is on the same side as <paramref name="point0"/>.</param>
+        /// <returns>
+        /// <see langword="true"/> If both points are on the same side;
+        /// <see langword="false"/> otherwise.
+        /// </returns>
         public bool SameSide(double3 point0, double3 point1)
         {
             double distanceToPoint1 = GetDistanceToPoint(point0);
@@ -279,27 +284,30 @@ namespace Unity.Geospatial.HighPrecision
 
 
         /// <summary>
-        ///   <para>Returns a formatted string for the plane.</para>
+        /// Returns a formatted string for the plane.
         /// </summary>
+        /// <returns>The formatted string representing this instance.</returns>
         public override string ToString()
         {
             return ToString(null, CultureInfo.InvariantCulture.NumberFormat);
         }
 
         /// <summary>
-        ///   <para>Returns a formatted string for the plane.</para>
+        /// Returns a formatted string for the plane.
         /// </summary>
         /// <param name="format">A numeric format string.</param>
+        /// <returns>The formatted string representing this instance.</returns>
         public string ToString(string format)
         {
             return ToString(format, CultureInfo.InvariantCulture.NumberFormat);
         }
 
         /// <summary>
-        ///   <para>Returns a formatted string for the plane.</para>
+        /// Returns a formatted string for the plane.
         /// </summary>
         /// <param name="format">A numeric format string.</param>
         /// <param name="formatProvider">An object that specifies culture-specific formatting.</param>
+        /// <returns>The formatted string representing this instance.</returns>
         public string ToString(string format, IFormatProvider formatProvider)
         {
             if (string.IsNullOrEmpty(format))

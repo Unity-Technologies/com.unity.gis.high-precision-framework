@@ -4,7 +4,7 @@
   
   <head>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);  })(window,document,'script','dataLayer','GTM-5V25JL6');</script>
-    <script type="text/javascript">thisPackageMetaData = { name: "com.unity.gis.high-precision-framework", version: "1.0.0-preview.2", displayTitle:"High Precision Framework 1.0.0-preview.2", lang: "en" };</script>
+    <script type="text/javascript">thisPackageMetaData = { name: "com.unity.gis.high-precision-framework", version: "1.0.0", displayTitle:"High Precision Framework 1.0.0", lang: "en" };</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
@@ -13,9 +13,9 @@
     <meta http-equiv="Expires" content="0">
     
   
-    <title>High Precision API | High Precision Framework | 1.0.0-preview.2 </title>
+    <title>High-Precision Framework | High Precision Framework | 1.0.0 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="High Precision API | High Precision Framework | 1.0.0-preview.2 ">
+    <meta name="title" content="High-Precision Framework | High Precision Framework | 1.0.0 ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    <meta property="unity:packageTitle" content="High Precision Framework | 1.0.0-preview.2">
+    <meta property="unity:packageTitle" content="High Precision Framework | 1.0.0">
     <meta property="docfx:rel" content="../">
     
   </head>
@@ -112,17 +112,23 @@
                       <a href="index.html" title="High Precision Framework" class="active">High Precision Framework</a>
                         
                         <ul class="nav level2">
-                          <li class="active">
-                            <a href="index.html" title="High-Precision Overview" class="active">High-Precision Overview</a>
-                          </li>
                           <li class="">
-                            <a href="installation.html" title="Package Installation" class="">Package Installation</a>
+                            <a href="installation.html" title="Installation" class="">Installation</a>
                           </li>
                           <li class="">
                             <a href="getting-started.html" title="Getting Started" class="">Getting Started</a>
                           </li>
                           <li class="">
+                            <a href="overview.html" title="Overview" class="">Overview</a>
+                          </li>
+                          <li class="">
+                            <a href="sample-scene.html" title="Try It With Our Sample Scene" class="">Try It With Our Sample Scene</a>
+                          </li>
+                          <li class="">
                             <a href="known-limitations.html" title="Known Limitations" class="">Known Limitations</a>
+                          </li>
+                          <li class="">
+                            <a href="using-unity-mathematics.html" title="Using Unity Mathematics" class="">Using Unity Mathematics</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -133,40 +139,18 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="high-precision-api">High Precision API</h1>
+<h1 id="high-precision-framework">High-Precision Framework</h1>
 
-<p>The High Precision (HP) framework allows Unity to render very large worlds by providing a standard way of addressing the limitations of the single-precision floating point system that is used to position and render GameObjects within the engine.</p>
-<h2 id="notice">Notice</h2>
-<p>Currently, only 64 bit windows version is supported.</p>
-<p>The High Precision Framework version v1.0.0-preview.2 is compatible with the following versions of the Unity Editor:</p>
+<p>The High Precision (HP) framework allows Unity to render very large worlds by providing a standard way of addressing the limitations of the single-precision floating point system that is used to position and render GameObjects within the engine. For more information
+on the package, please see the full documentation:</p>
 <ul>
-<li>2020.3 and later</li>
+<li><a href="installation.html">Installation</a></li>
+<li><a href="getting-started.html">Getting Started</a></li>
+<li><a href="overview.html">Overview</a></li>
+<li><a href="sample-scene.html">Try It With Our Sample Scene</a></li>
+<li><a href="known-limitations.html">Known Limitations</a></li>
+<li><a href="using-unity-mathematics.html">Using Unity Mathematics</a></li>
 </ul>
-<p>The High Precision Framework is not yet fully integrated with all of Unity&#39;s subsystems,
-such as <a href="known-limitations.html#Physics">physics</a> and <a href="known-limitations.html#Navigation-Mesh">navigation mesh</a>.
-See the dedicated page <a href="known-limitations.html">Known Limitations</a> for more information.</p>
-<h2 id="introducing-universe-space">Introducing Universe Space</h2>
-<p>When using the HP framework, the user will be introduced to two new components: The HPTransform and the HPRoot. The HPTransform acts similarly to the Transform we already know. However, rather than positioning an object in world space, it positions a GameObject in universe space, with double floating point precision.</p>
-<p>The HPRoot component translates objects positioned in universe space into world space, such that they can be displayed in the scene. It contains a TR (Translation-Rotation) which determines the point in the universe space that corresponds to the root’s position in world space. For example, if the HPRoot has the same TR as an HPTransform, the latter will be positioned, in world space, exactly on the former, with matching rotation and scale.</p>
-<p>Under most circumstances, the HPRoot’s transform will be set to the origin of the scene. However, there are exceptions. In the case of AR experiences, down-sizing a city contained in HP space and viewing it on a table could be achieved by scaling down the HPRoot and placing it at the center of the table.</p>
-<h2 id="rendering-hp-space">Rendering HP Space</h2>
-<p>Being in double precision, the universe space can contain planet-scale scenes without needing to worry about precision issues. However, in order to be rendered, it must be translated back into world space. As we have seen in the previous section, the HPRoot controls this process and is the key to implementing various rebasing schemes which dynamically translate our universe space into world space.</p>
-<h3 id="static-rebasing">Static Rebasing</h3>
-<p>Static rebasing is the simplest scheme whereby a single point in universe space is positioned near the origin of world space. This is implemented by setting the HPRoot’s TRS to the specified point of interest.</p>
-<h3 id="camera-centric-dynamic-rebasing">Camera-Centric Dynamic Rebasing</h3>
-<p>Dynamic rebasing is achieved by constantly adjusting the HPRoot’s TRS to a moving point of interest. This can be implemented using the LocalCoordinateSystem component to tie the HPRoot’s TRS to an HPTransform such as that used to position the camera.</p>
-<h3 id="local-vertical-coordinate-system">Local Vertical Coordinate System</h3>
-<p>When rendering a planet, the definition of up depends on where you are standing on the planet. It is often more practical to keep the world space up vector aligned with the planet’s up vector by rotating the HPRoot’s TRS and aligning the HP space’s local up vector with the world’s up vector. An implementation of this is available through the LocalVerticalCoordinateSystem found in the UnityGeospatial framework.</p>
-<h2 id="constraints-to-the-hierarchy">Constraints to the Hierarchy</h2>
-<p>Some design constraints need to be taken into consideration when building out the scene’s hierarchy. Before using the HP framework, you should be familiar with the following design principles:</p>
-<p><img src="images/HPSimpleHierarchy.png" alt="">
-<em>An example of a simple HP hierarchy, where some objects are in HP space while others are only in world space.</em></p>
-<p><img src="images/HPOrganizedHierarchy.png" alt="">
-<em>An example of a more complex hierarchy where GameObjects are used for the organization of the scene.</em></p>
-<p><img src="images/HPMultipleHierarchy.png" alt="">
-<em>An example of multiple HP spaces coexisting within the same scene.</em></p>
-<h2 id="unity-mathematics">Unity Mathematics</h2>
-<p>The HP framework uses <a href="https://docs.unity3d.com/Packages/com.unity.mathematics@1.1/manual/index.html">Unity Mathematics</a>. See the following <a href="using-unity-mathematics.html">page</a> to help you do the transition.</p>
 </article>
           </div>
           

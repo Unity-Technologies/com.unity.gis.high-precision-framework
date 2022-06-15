@@ -1,22 +1,28 @@
 {
     "name": "com.unity.gis.high-precision-framework",
-    "version": "1.0.0-preview.2",
+    "version": "1.0.0",
     "displayName": "High Precision Framework",
-    "description": "This high precision framework is a package which allows for the easy creation of large-scale visualizations. It is being developed by the geospatial group in labs but has the ambition of solving problems outside of the pure geospatial streaming applications.",
+    "description": "The High Precision (HP) framework allows Unity to render very large worlds by providing a standard way of addressing the limitations of the single-precision floating point system that is used to position and render GameObjects within the engine.",
     "unity": "2020.3",
     "unityRelease": "23f1",
     "dependencies": {
-        "com.unity.mathematics": "1.2.5",
-        "com.unity.burst": "1.4.11"
+        "com.unity.mathematics": "1.2.6",
+        "com.unity.burst": "1.7.1"
     },
+    "samples": [
+        {
+            "displayName": "High Precision Sample",
+            "description": "Contains sample scene for the high precision framework",
+            "path": "Samples~/SampleScene"
+        }
+    ],
     "keywords": [
         "precision",
         "double",
         "64bit"
     ],
     "author": {
-        "name": "Jonathan de Belle",
-        "email": "jonathan.debelle@unity3d.com",
+        "name": "Unity",
         "url": "https://www.unity3d.com"
     }
 }

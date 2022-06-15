@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 using Unity.Mathematics;
 using Unity.Profiling;
@@ -13,7 +13,7 @@ namespace Unity.Geospatial.HighPrecision
     /// </summary>
     [ExecuteAlways]
     [AddComponentMenu("HighPrecision/HPRoot")]
-    public class HPRoot : MonoBehaviour, HPNode
+    public class HPRoot : HPNode
     {
         /// <inheritdoc cref="HPNode.LocalPosition"/>
         [SerializeField]
@@ -22,13 +22,6 @@ namespace Unity.Geospatial.HighPrecision
         /// <inheritdoc cref="HPNode.LocalRotation"/>
         [SerializeField]
         private quaternion m_LocalRotation = quaternion.identity;
-
-        /// <summary>
-        /// List of the child nodes of this instance. Those nodes will multiply their <see cref="LocalMatrix"/> by this
-        /// instance <see cref="UniverseMatrix"/> to get their <see cref="UniverseMatrix"/> and same thing for the
-        /// <see cref="WorldMatrix"/>.
-        /// </summary>
-        private readonly List<HPTransform> m_Children = new List<HPTransform>();
 
         /// <summary>
         /// <see langword="true"/> if the <see cref="WorldMatrix"/> is already calculated and stored;
@@ -47,27 +40,17 @@ namespace Unity.Geospatial.HighPrecision
         private static ProfilerMarker s_LateUpdateMarker = new ProfilerMarker("HPRoot.LateUpdate");
 
         /// <inheritdoc cref="HPNode.LocalPosition"/>
-        double3 HPNode.LocalPosition
-        {
-            get { return LocalPosition; }
-        }
-
-        /// <inheritdoc cref="HPNode.LocalPosition"/>
-        internal double3 LocalPosition
+        public override double3 LocalPosition
         {
             get { return double3.zero; }
+            set { throw new NotSupportedException($"{nameof(HPRoot)}.{nameof(LocalPosition)} cannot be changed."); }
         }
 
         /// <inheritdoc cref="HPNode.UniversePosition"/>
-        double3 HPNode.UniversePosition
-        {
-            get { return UniversePosition; }
-        }
-
-        /// <inheritdoc cref="HPNode.UniversePosition"/>
-        internal double3 UniversePosition
+        public override double3 UniversePosition
         {
             get { return double3.zero; }
+            set { throw new NotSupportedException($"{nameof(HPRoot)}.{nameof(UniversePosition)} cannot be changed."); }
         }
 
         /// <summary>
@@ -112,55 +95,40 @@ namespace Unity.Geospatial.HighPrecision
         }
 
         /// <inheritdoc cref="HPNode.LocalRotation"/>
-        quaternion HPNode.LocalRotation
-        {
-            get { return LocalRotation; }
-        }
-
-        /// <inheritdoc cref="HPNode.LocalRotation"/>
-        internal quaternion LocalRotation
+        public override quaternion LocalRotation
         {
             get { return quaternion.identity; }
+            set { throw new NotSupportedException($"{nameof(HPRoot)}.{nameof(LocalRotation)} cannot be changed."); }
         }
 
         /// <inheritdoc cref="HPNode.UniverseRotation"/>
-        quaternion HPNode.UniverseRotation
-        {
-            get { return UniverseRotation; }
-        }
-
-        /// <inheritdoc cref="HPNode.UniverseRotation"/>
-        internal quaternion UniverseRotation
+        public override quaternion UniverseRotation
         {
             get { return quaternion.identity; }
+            set { throw new NotSupportedException($"{nameof(HPRoot)}.{nameof(UniverseRotation)} cannot be changed."); }
         }
 
         /// <inheritdoc cref="HPNode.LocalScale"/>
-        float3 HPNode.LocalScale
-        {
-            get { return LocalScale; }
-        }
-
-        /// <inheritdoc cref="HPNode.LocalScale"/>
-        internal float3 LocalScale
+        public override float3 LocalScale
         {
             get { return new float3(1F); }
+            set { throw new NotSupportedException($"{nameof(HPRoot)}.{nameof(LocalScale)} cannot be changed."); }
         }
 
         /// <inheritdoc cref="HPNode.LocalMatrix"/>
-        double4x4 HPNode.LocalMatrix
+        public override double4x4 LocalMatrix
         {
             get { return double4x4.identity; }
         }
 
         /// <inheritdoc cref="HPNode.UniverseMatrix"/>
-        double4x4 HPNode.UniverseMatrix
+        public override double4x4 UniverseMatrix
         {
-            get { return double4x4.identity; }
+            get { return double4x4.identity;; }
         }
 
         /// <inheritdoc cref="HPNode.WorldMatrix"/>
-        public double4x4 WorldMatrix
+        public override double4x4 WorldMatrix
         {
             get
             {
@@ -229,18 +197,6 @@ namespace Unity.Geospatial.HighPrecision
         {
             quaternion worldRotationInverted = math.inverse(WorldMatrix.GetRotation());
             return math.mul(worldRotationInverted, worldRotation);
-        }
-
-        /// <inheritdoc cref="HPNode.RegisterChild"/>
-        void HPNode.RegisterChild(HPTransform child)
-        {
-            m_Children.Add(child);
-        }
-
-        /// <inheritdoc cref="HPNode.UnregisterChild"/>
-        void HPNode.UnregisterChild(HPTransform child)
-        {
-            m_Children.Remove(child);
         }
 
         /// <summary>

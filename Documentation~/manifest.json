@@ -23,7 +23,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/TableOfContents.html",
-          "hash": "HAOY626nSJKAbLf+tTl/MdRwYn/IoMCNehuEbtb6ToY="
+          "hash": "m5r6V7LB8U9TJBdxu/riVWitMcxIE1nj1nP6YaCe/TM="
         }
       },
       "is_incremental": false,
@@ -35,7 +35,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/getting-started.html",
-          "hash": "3L7YpovqyfGq1wlRAuReKa2HMTw57aYi9EdWa9DShtk="
+          "hash": "IpU02SZ5fbuYqOfhaWoF1MLR4OVf8Qy8N2IpcM3OGCE="
         }
       },
       "is_incremental": false,
@@ -80,6 +80,17 @@
       "output": {
         "resource": {
           "relative_path": "manual/images/HPMultipleHierarchy.uxf"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/images/HPNewProject.png",
+      "output": {
+        "resource": {
+          "relative_path": "manual/images/HPNewProject.png"
         }
       },
       "is_incremental": false,
@@ -142,6 +153,39 @@
     },
     {
       "type": "Resource",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/images/HPRootPos2.png",
+      "output": {
+        "resource": {
+          "relative_path": "manual/images/HPRootPos2.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/images/HPSampleHierarchy.png",
+      "output": {
+        "resource": {
+          "relative_path": "manual/images/HPSampleHierarchy.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/images/HPSampleSceneImport.png",
+      "output": {
+        "resource": {
+          "relative_path": "manual/images/HPSampleSceneImport.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
       "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/images/HPSimpleHierarchy.png",
       "output": {
         "resource": {
@@ -168,7 +212,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/index.html",
-          "hash": "IQs9a52aQHWXfdf4vXT8fBH13Serb3lPNgYpm6AO1Cc="
+          "hash": "q1MMnZDFR3SqD9HX8PsmYOvnsZee63bXzT8cQOqL6Ws="
         }
       },
       "is_incremental": false,
@@ -180,7 +224,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/installation.html",
-          "hash": "E0esnalF2zlsOE6MBSeX4bqKxd4AJT/6TWeKpCvBO4Y="
+          "hash": "szijKZCeBP4ra2eT09KrM70cKjN0H0HEynKEa3vEPEk="
         }
       },
       "is_incremental": false,
@@ -192,7 +236,31 @@
       "output": {
         ".html": {
           "relative_path": "manual/known-limitations.html",
-          "hash": "g5aSeDgPTKKsGNcEihH7gZK2fulonW5A5HktPi62BfQ="
+          "hash": "PiS1+bpi67AtDVTUHpt336rseGAxa6CVYBxc/G4/z+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/overview.html",
+          "hash": "LajyVEHMKQZO0aePIRpMU9JYQMZBGpQXOFE/khFDltc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Packages/com.unity.gis.high-precision-framework/Documentation~/sample-scene.md",
+      "output": {
+        ".html": {
+          "relative_path": "manual/sample-scene.html",
+          "hash": "MK5nQElzd7Y3A4Sm9IgYJGhOn+if7KX0dYoXJwFq3n4="
         }
       },
       "is_incremental": false,
@@ -204,7 +272,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/toc.html",
-          "hash": "EtQgvWajB2mXMNF9jS3t+2IWVWlTyqrO3flwe0qqoZQ="
+          "hash": "Ew3s4eRgp5ejdxVy/q5TzG0pD6cucfEvz4mN/RohyBM="
         }
       },
       "is_incremental": false,
@@ -216,7 +284,7 @@
       "output": {
         ".html": {
           "relative_path": "manual/using-unity-mathematics.html",
-          "hash": "ETFinWXUWwCpjTuoKEu0Onggs5P4QS8M5NO+i6LsaE8="
+          "hash": "a9kxakGlmfW3LSWr2TPmzpNXzkUOXtgt5rWpO+QEcsE="
         }
       },
       "is_incremental": false,
@@ -228,7 +296,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.DoubleBounds.html",
-          "hash": "XCuK8uB3UXyZVYMbbd+uuPECoxF+dlNuzYSk5NFDoS8="
+          "hash": "k3dHrsw/lPsRVWXzPqplYCJFoLBhVNwcsiEtJ+BewRU="
         }
       },
       "is_incremental": false,
@@ -240,7 +308,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.DoublePlane.html",
-          "hash": "fcKMXAo/D0d7s+jeaPQv/z7di0lqX/tL360BsV7R1b0="
+          "hash": "oiZ/oy53P6O7pm4VRyw4rq27+f4l/1RRp6e0P+zvjrQ="
         }
       },
       "is_incremental": false,
@@ -252,7 +320,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.CoordinateSystemInspector.ScaleTypes.html",
-          "hash": "XEdmjYQVTUdOjoljIZFuKozjnEEbODfx8ez/BeqswaM="
+          "hash": "+foNIswAs6Is4k4/Mh12q0esdsoPggHQj919LIV/nR8="
         }
       },
       "is_incremental": false,
@@ -264,7 +332,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.CoordinateSystemInspector.html",
-          "hash": "9AJENwzg0P2/ORmrP4FKi6DC3WpDn+zfwepPyv2p7ac="
+          "hash": "keXAI6noMjAqouIBTvx5FSPTYRS04zBZV3OcxYxo7tM="
         }
       },
       "is_incremental": false,
@@ -276,7 +344,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.DefaultCoordinateSystemInspector.html",
-          "hash": "wkGfX27BntqGi796AIYtZSX1zLfOLnsbdj3GsT3oMhs="
+          "hash": "sG/N6UmTX1xN9oC6MWz0BtZuS8LwKFim8sfBxdYpIr8="
         }
       },
       "is_incremental": false,
@@ -288,7 +356,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.EditorGUILayoutWrapper.html",
-          "hash": "2gCdtP8teVfeiHWI3dP9lYA3bXo0JwHW9GL2hvzt1Ec="
+          "hash": "Ckfz213GocE0jdAwsURU2OqxhdqtL42nLk2QeskzNE0="
         }
       },
       "is_incremental": false,
@@ -300,7 +368,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.HPNodeInspector.html",
-          "hash": "1BUsRtuTadCLr7mcvJCKK5wx6iIPaBx+kGtdsUi1IMU="
+          "hash": "y1d+n9oNIvaW7QTZyEXPgvmxs/SQqXU+sNGdwE5f4Gs="
         }
       },
       "is_incremental": false,
@@ -312,7 +380,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.HPRootInspector.html",
-          "hash": "1+Dzd5ik6ZkcO4vNzrmC/Z4Li0nj8dGheQqsCSN9LXE="
+          "hash": "LzTOQY0n6o1xmWZvl7/YXgJap4V3BP8o7pyO5byBBiE="
         }
       },
       "is_incremental": false,
@@ -324,43 +392,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.HPTransformInspector.html",
-          "hash": "LM3sHkni0AWx5J2cF5dN7Chs10QWwQzAh/EMa+4RZ2Y="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.CoordinateSystemInspectorTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.CoordinateSystemInspectorTests.html",
-          "hash": "4E2EW3OsIBuq0H+MaywO2KPTLX172f31IoMuhHhzKJM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.DefaultCoordinateSystemInspectorTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.DefaultCoordinateSystemInspectorTests.html",
-          "hash": "J8Ap0yqyMAHfXvEJtr0pXhkoXlwaZ0qMIhxvW/+W8+M="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.Testing.html",
-          "hash": "YT5oH24m0pg6rm5rL5UgvtODUOsWuAIUG9xoCh8N8fU="
+          "hash": "IvRypjCQ+uAs6PrFFxO6kpac0qKXG7CkIgBmP2Ww9ck="
         }
       },
       "is_incremental": false,
@@ -372,7 +404,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.TransformEditorOverride.html",
-          "hash": "OG+RxlzoUUeeAQnLPAkVP6OYJV34azVPHnDNHvrB3Yo="
+          "hash": "gRKBtoEKgJwWKZV0kZLfZu8LpIA6oCegIqFnj1iXw/Q="
         }
       },
       "is_incremental": false,
@@ -384,7 +416,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.Editor.html",
-          "hash": "yKrdniqwORkknyXJLv3eu9asj7xTPMguyLeVshQBb3M="
+          "hash": "IYUtnQDVIQDnZVE5z9ram1ke+tHSi1OpH5A6C4viTw0="
         }
       },
       "is_incremental": false,
@@ -396,7 +428,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.HPMath.html",
-          "hash": "Jmur0Be9GHM5mrucus6/T4kzENxYYMJQS+0VdLKIbR4="
+          "hash": "OaonxeXn/qx/fNjKU4ZHNdZJp88qV+BhV5Tc/kp7dqc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Unity.Geospatial.HighPrecision.HPNode.ScaleTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unity.Geospatial.HighPrecision.HPNode.ScaleTypes.html",
+          "hash": "CoZR3HOEim6y6l7dv++3IHwApdoxO/bPxsrYCLc3rBc="
         }
       },
       "is_incremental": false,
@@ -408,7 +452,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.HPNode.html",
-          "hash": "+1nQkTApHtyFqZW00BzE152BspUFcXcc8EnxznpFJfY="
+          "hash": "m2MY2FHFjhummTqjT0tjXvgGTgcL9bmtoXeGLVOSkpo="
         }
       },
       "is_incremental": false,
@@ -420,19 +464,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.HPRoot.html",
-          "hash": "0ClT4jt8ci65HLhRoSXRm0wIkh+lKjD9yIZVt9SmnCw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.HPTransform.ScaleTypes.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.HPTransform.ScaleTypes.html",
-          "hash": "W9Z1DYpOOimKoIYps6ulzWOcAHJafRVH8aTf3UEqDu4="
+          "hash": "IRJb6xgyqZ2jSwjuJJkI0S86PDwzRdaGgRuIl+8dPfg="
         }
       },
       "is_incremental": false,
@@ -444,7 +476,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.HPTransform.html",
-          "hash": "St9gAS41cr1HXVw/ujEDxwI5p2xSth13KLF6pSRxZuw="
+          "hash": "anSju7+r9C1QAUlkVgfd2CSviGczDQyODVIb7Ac5wZs="
         }
       },
       "is_incremental": false,
@@ -456,7 +488,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.LocalCoordinateSystem.html",
-          "hash": "gPDf+lWyvUNp4OKQEgX9rMpnFVvTmXC8sVW1YPBximE="
+          "hash": "kMLn29RjS9Wk5T4aRgoM0S987JuI8BHk/0GIhHcBgR8="
         }
       },
       "is_incremental": false,
@@ -468,7 +500,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.MathExtension.html",
-          "hash": "gEttpbDmHIk0Kw8x3fkFN3gWzKuyY4HfpAjD0YtQT2o="
+          "hash": "1m2QuMpvg55SjubMVjIa4Fgki4lySR6wwMWQJVecPyo="
         }
       },
       "is_incremental": false,
@@ -480,7 +512,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.MatrixExtension.html",
-          "hash": "BrCmiPGQ5Rd82ZcBwti/roKfG4/lE+e4iK7FUOyTCkM="
+          "hash": "JIzIioAIduaSYgMWzBl0dqnD98sGlZOPhcBjODsDyxQ="
         }
       },
       "is_incremental": false,
@@ -492,247 +524,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.SerializableDoubleBounds.html",
-          "hash": "0XQGcDj6YCQAHZSWTYpAYm/wA2ApqFAgaG5WiVuUbMg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.DoubleBoundsTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.DoubleBoundsTests.html",
-          "hash": "hJEkeDen3ae0oT8y1BeBcWz6n8+BHQJPWUl90yQLn08="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.DoublePlaneTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.DoublePlaneTests.html",
-          "hash": "1hD+iTUVymvlz9YJ4IqAbfykyWvhhrKjf1vazD9skhI="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPMathTests.TRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPMathTests.TRS.html",
-          "hash": "C9KzEOabkV1bbaSmb9ugzs93aDJeOSSGvqXiMqoCa7Y="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPMathTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPMathTests.html",
-          "hash": "jfKFfF+4L0rWMsBkyzHNCATIDFy4Y6kdG4vzjB3hGwY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPRootTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPRootTests.html",
-          "hash": "J2LmeMQL6eVzexOkUqQtOiYkRFfgk/R/xR9HyNjWtQg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase1TRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase1TRS.html",
-          "hash": "xPVuDGKgjSDrv8E5p1C128CKNJ4phuM2p2TRBql12g4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase2TRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase2TRS.html",
-          "hash": "WcmYfW+J5uFXdCWtlYoneubg4WrlRhD+tH0tC01w5xg="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase3TRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCase3TRS.html",
-          "hash": "M3djW4yQ4MYl/Cp/kkXtOQSJUbTXqLeIcG6s/op5ohs="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCaseTRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.TestCaseTRS.html",
-          "hash": "oCJMEcWNUHoyyO7QGSo94PLV9E4Y5yZ8iPav9bUqdJw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.HPTransformTests.html",
-          "hash": "n/ACiW7x+eMVxsFEgsaGgPdHSNUl1kRH921HfVKWu+c="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.LocalCoordinateSystemTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.LocalCoordinateSystemTests.html",
-          "hash": "yRFxd7ofNtSH4WImL//voo+8XA3zcVSNht5NvKwC63k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MathExtensionTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MathExtensionTests.html",
-          "hash": "dPvAtoBxbxBJUK6HuDbye+L0ly8fHm2Q0JrFAzR/cqE="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MatrixExtensionTests.TRS.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MatrixExtensionTests.TRS.html",
-          "hash": "Uopd0bCBSGVQjBpSv67fPOrl7xwGBuElkJMYguHnBBw="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MatrixExtensionTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.MatrixExtensionTests.html",
-          "hash": "MHN7/2g39xSfzJQLgx3wFQWY21QA0tCl1ocTtis1Tn8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.NamingConventions.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.NamingConventions.html",
-          "hash": "wS4k66i9sWgWZDPnSouW3QLdatsIeSlyY0hUQDr1/e0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.SerializableDoubleBoundsTests.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.SerializableDoubleBoundsTests.html",
-          "hash": "cSi87cGidh6SFxppm08pYxLSb3PcyGSk2IbWL6DYOOc="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.UnityEngine.OnTransformChangeBehaviour.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.UnityEngine.OnTransformChangeBehaviour.html",
-          "hash": "YWqA/75DsKTFAdxGejA5w8N9WIBXywCNYJrFoQBAO9A="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.UnityEngine.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.UnityEngine.html",
-          "hash": "kU9lHqEGo/P+KK0TbMx7+KLLSTLpQGKVebRwoN4yv0U="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.Utility.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.Utility.html",
-          "hash": "BYtXcamSqgc/pOY8lUuVGlOva5ySt6krtEYvcfaBlMM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/Unity.Geospatial.HighPrecision.Testing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unity.Geospatial.HighPrecision.Testing.html",
-          "hash": "+2JPLcpwBEiVFQUFvVK6BICLiD7L13z30vvNESA10VY="
+          "hash": "VHHxbYk2R3wXfUAdWJI9ZxoA+tklSppCEfYjX240d48="
         }
       },
       "is_incremental": false,
@@ -744,7 +536,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unity.Geospatial.HighPrecision.html",
-          "hash": "vaHSo/ALoVs5zQkFjw7JXDeSTF+AIn95o5a5mheWCR4="
+          "hash": "r1KPPAOCYOa1xCi4OyjMS3YhMnikF+m3vEvj9ssjb2s="
         }
       },
       "is_incremental": false,
@@ -756,7 +548,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "8Fbuk2Fkhq9NhJhK1JnPVOJi/bIW9ckFX+Zx3wI5pZA="
+          "hash": "bOXBehoLY+1qjW6vsl8R1xIHayF7zss9IxMX0MMDqps="
         }
       },
       "is_incremental": false,
@@ -768,7 +560,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "KcEGSESAhjRYXTXq1LacRescsFxII+xccKdZrso3eQI="
+          "hash": "vyXTHGEDvFMNYPtu3j1T4FoTmTcRHrDu1YUzY7AZYMQ="
         }
       },
       "is_incremental": false,
@@ -780,7 +572,7 @@
       "output": {
         ".html": {
           "relative_path": "changelog/CHANGELOG.html",
-          "hash": "JEC9SGPtSA7E42fGR5e97LFhxwVr7Z0gSGm0pMAVp04="
+          "hash": "2d+XuelUz1hXEzKtSmXQ03ReCTQdiq2xvAcp/ZF9W84="
         }
       },
       "is_incremental": false,
@@ -804,7 +596,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "AbpSVfBVqeoK68WaED4Yhn/m2ZWoY5n4Bu1ZDK+hp2o="
+          "hash": "xIuaP/Nfpsc49ETlWSkgI+Em6NskBZGUZxxKnbSciu4="
         }
       },
       "is_incremental": false,
@@ -816,7 +608,7 @@
       "output": {
         ".html": {
           "relative_path": "license/LICENSE.html",
-          "hash": "6HwISNkq/EC4XPM5kOeXXZvdYpbaYHiHKBFWTMsJcJE="
+          "hash": "f9wbkOT2Ri8QOa6RmiXVI+r1E26nDPdCEv8boXA10k0="
         }
       },
       "is_incremental": false,
@@ -828,7 +620,7 @@
       "output": {
         ".html": {
           "relative_path": "license/index.html",
-          "hash": "KgJWistrTccqbuGNdbY4vJg6+OVobT9nZF7e8RcFZRI="
+          "hash": "CDSc5SNjilzvEK3w3YP+kTG4R8NIVocSxOmqzZMl+0w="
         }
       },
       "is_incremental": false,
@@ -884,13 +676,13 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 11,
+          "total_file_count": 13,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 44,
+          "total_file_count": 21,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

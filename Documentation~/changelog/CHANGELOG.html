@@ -4,7 +4,7 @@
   
   <head>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);  })(window,document,'script','dataLayer','GTM-5V25JL6');</script>
-    <script type="text/javascript">thisPackageMetaData = { name: "com.unity.gis.high-precision-framework", version: "1.0.0-preview.2", displayTitle:"High Precision Framework 1.0.0-preview.2", lang: "en" };</script>
+    <script type="text/javascript">thisPackageMetaData = { name: "com.unity.gis.high-precision-framework", version: "1.0.0", displayTitle:"High Precision Framework 1.0.0", lang: "en" };</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   
@@ -13,9 +13,9 @@
     <meta http-equiv="Expires" content="0">
     
   
-    <title>Changelog | High Precision Framework | 1.0.0-preview.2 </title>
+    <title>Changelog | High Precision Framework | 1.0.0 </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Changelog | High Precision Framework | 1.0.0-preview.2 ">
+    <meta name="title" content="Changelog | High Precision Framework | 1.0.0 ">
     <meta name="generator" content="docfx 2.58.9.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
-    <meta property="unity:packageTitle" content="High Precision Framework | 1.0.0-preview.2">
+    <meta property="unity:packageTitle" content="High Precision Framework | 1.0.0">
     <meta property="docfx:rel" content="../">
     
   </head>
@@ -123,15 +123,42 @@
 <p>All notable changes to this package will be documented in this file.</p>
 <p>The format is based on <a href="http://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>
 and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
-<h2 id="100-preview2---2022-05-20">[1.0.0-preview.2] - 2022-05-20</h2>
+<h2 id="100---2022-06-15">[1.0.0] - 2022-06-15</h2>
 <h3 id="added">Added</h3>
 <ul>
-<li>SerializableDoubleBounds to allow for easy DoubleBounds serialization
-### Modified</li>
+<li>Add .samples.json file according to validation tools</li>
+</ul>
+<h3 id="fix">Fix</h3>
+<ul>
+<li>Remove stray meta file in samples</li>
+<li>Adjust changelog line spacing such that documentation can be correctly generated</li>
+</ul>
+<h2 id="100-preview4---2022-06-14">[1.0.0-preview.4] - 2022-06-14</h2>
+<h3 id="added-1">Added</h3>
+<ul>
+<li>HPF Sample Scene</li>
+</ul>
+<h3 id="modified">Modified</h3>
+<ul>
+<li>SerializableDoubleBounds can be explicitly cast to Bounds</li>
+</ul>
+<h2 id="100-preview3---2022-06-02">[1.0.0-preview.3] - 2022-06-02</h2>
+<h3 id="modified-1">Modified</h3>
+<ul>
+<li>HPNode is now an abstract class instead of an interface.</li>
+<li>Updated the documentation with the samples scene.</li>
+</ul>
+<h2 id="100-preview2---2022-05-20">[1.0.0-preview.2] - 2022-05-20</h2>
+<h3 id="added-2">Added</h3>
+<ul>
+<li>SerializableDoubleBounds to allow for easy DoubleBounds serialization</li>
+</ul>
+<h3 id="modified-2">Modified</h3>
+<ul>
 <li>Make DoubleBounds readonly</li>
 </ul>
 <h2 id="100-preview1---2022-05-11">[1.0.0-preview.1] - 2022-05-11</h2>
-<h3 id="modified">Modified</h3>
+<h3 id="modified-3">Modified</h3>
 <ul>
 <li>Merged CoordinateSystemInspector.TargetTransform and CoordinateSystemInspector.TargetRoot to CoordinateSystemInspector.Target</li>
 <li>Removed HPNode.NodeType</li>
@@ -139,55 +166,67 @@ and this project adheres to <a href="http://semver.org/spec/v2.0.0.html">Semanti
 <li>Removed Unity.Geospatial.HighPrecision.Internal namespace</li>
 </ul>
 <h2 id="100-preview0---2022-05-11">[1.0.0-preview.0] - 2022-05-11</h2>
-<h3 id="added-1">Added</h3>
+<h3 id="added-3">Added</h3>
 <ul>
-<li>Add <strong>Known Limitations</strong> documentation.
-### Modified</li>
+<li>Add <strong>Known Limitations</strong> documentation.</li>
+</ul>
+<h3 id="modified-4">Modified</h3>
+<ul>
 <li>Changed DBound Empty evaluation to be a bool instead of a negative value.</li>
 <li>Now using Unity.Mathematics</li>
 <li>DMatrix4x4, DVector2, DVector3, DVector4 have been removed</li>
-<li>Changed namespaces to Unity.Geospatial.HighPrecision
-### Fix</li>
+<li>Changed namespaces to Unity.Geospatial.HighPrecision</li>
+</ul>
+<h3 id="fix-1">Fix</h3>
+<ul>
 <li>HPTransform not updating Transform on Reset and on Paste Component Values</li>
 </ul>
-<h2 id="033-preview0---2021-11-26">[0.3.3-preview.0] - 2021-11-26</h2>
-<h3 id="fix">Fix</h3>
+<h2 id="033-preview0---2021-10-03">[0.3.3-preview.0] - 2021-10-03</h2>
+<h3 id="fix-2">Fix</h3>
 <ul>
 <li>Fix a bug where scale is not currently updated in HPTransform</li>
 </ul>
 <h2 id="032-preview0---2021-09-16">[0.3.2-preview.0] - 2021-09-16</h2>
-<h3 id="modified-1">Modified</h3>
+<h3 id="modified-5">Modified</h3>
 <ul>
 <li>Migrate to Standard Unity Package format</li>
 <li>Split High Precision Framework repo from Streaming Framework</li>
-<li>Migrate documentation from Sphinx to Unity DocTools
-### Added</li>
+<li>Migrate documentation from Sphinx to Unity DocTools</li>
+</ul>
+<h3 id="added-4">Added</h3>
+<ul>
 <li>Union Operation to Bounds</li>
 <li>Yamato Test integration</li>
 <li>Add API in HPRoot to transform points, directions, and rotations
 between universe space and world space</li>
 </ul>
 <h2 id="031-preview3---2021-06-04">[0.3.1-preview.3] - 2021-06-04</h2>
-<h3 id="added-2">Added</h3>
+<h3 id="added-5">Added</h3>
 <ul>
 <li>Support for multiple cameras</li>
 <li>A geodetic extent object which can be reused to define
 an extent for modifiers. The extent can also be modified
-at play-time.
-### Modified</li>
+at play-time.</li>
+</ul>
+<h3 id="modified-6">Modified</h3>
+<ul>
 <li>Extent modifier to use the new geodetic extent object</li>
 <li>Extent modifier to support multiple vertex streams</li>
 <li>Documentation to reflect changes made to the extent
-modifier.
-### Fix</li>
+modifier.</li>
+</ul>
+<h3 id="fix-3">Fix</h3>
+<ul>
 <li>Memory leak which was detected in previous version</li>
 </ul>
 <h2 id="031-preview2---2021-05-15">[0.3.1-preview.2] - 2021-05-15</h2>
-<h3 id="added-3">Added</h3>
+<h3 id="added-6">Added</h3>
 <ul>
 <li>Support for hierarchical OGC 3DTiles tilesets</li>
-<li>Ability to generate HP Framework package only
-### Modified</li>
+<li>Ability to generate HP Framework package only</li>
+</ul>
+<h3 id="modified-7">Modified</h3>
+<ul>
 <li>Move 3DTile json parsing to another thread</li>
 <li>Split Universal decoder processing over multiple frames to
 reduce overall impact on performance</li>
@@ -197,27 +236,31 @@ to load first rather than the opposite in previous
 implementation.</li>
 </ul>
 <h2 id="031-preview1---2021-05-12">[0.3.1-preview.1] - 2021-05-12</h2>
-<h3 id="added-4">Added</h3>
+<h3 id="added-7">Added</h3>
 <ul>
 <li>Geospatial Synchronization Context to better control execution
-time of await/async in GLTFast.
-### Modified</li>
+time of await/async in GLTFast.</li>
+</ul>
+<h3 id="modified-8">Modified</h3>
+<ul>
 <li>Make it possible to have an Camera that is located in world
 space rather than being located in Universe space.</li>
 <li>Make it possible for extent modifier to deal with children</li>
 </ul>
 <h2 id="031-preview0---2021-05-10">[0.3.1-preview.0] - 2021-05-10</h2>
-<h3 id="added-5">Added</h3>
+<h3 id="added-8">Added</h3>
 <ul>
 <li>Universal OGC 3D Tiles loader</li>
-<li>Dependency on GLTFast for 3D tile loader
-### Modified</li>
+<li>Dependency on GLTFast for 3D tile loader</li>
+</ul>
+<h3 id="modified-9">Modified</h3>
+<ul>
 <li>HPTransform optimizations</li>
 <li>Changes to the internal presenter structure to
 support children (required for GLTFast)</li>
 </ul>
 <h2 id="030-preview0---2021-04-02">[0.3.0-preview.0] - 2021-04-02</h2>
-<h3 id="added-6">Added</h3>
+<h3 id="added-9">Added</h3>
 <ul>
 <li>HDRP Support via HDRP Material Factory</li>
 <li>UGSystem Modifier Stack</li>
@@ -228,8 +271,10 @@ support children (required for GLTFast)</li>
 be pushed into lit shaders for relighting</li>
 <li>Presenter concept has been added to UGSystem, allowing datasets to 
 be spawned on different render layers as well as on different
-GameObjects.
-### Modified</li>
+GameObjects.</li>
+</ul>
+<h3 id="modified-10">Modified</h3>
+<ul>
 <li>Significant changes to documentation</li>
 <li>Moved away from .unitypackage and into package manager workflow</li>
 <li>UGSystem has become UGSystemBehaviour. Similar name changes have
@@ -260,7 +305,7 @@ messages are still non-descript.</li>
 to a prefab.</li>
 </ul>
 <h2 id="020-preview0---2021-02-22">[0.2.0-preview.0] - 2021-02-22</h2>
-<h3 id="modified-2">Modified</h3>
+<h3 id="modified-11">Modified</h3>
 <p>THIS IS A COMPLETELY NEW VERSION OF THE API THAT INCORPORATES
 A HIGH PRECISION RENDERING FRAMEWORK. SEE BELOW FOR PRIMARY
 CHANGES:</p>
@@ -277,13 +322,15 @@ CHANGES:</p>
 component.</li>
 </ul>
 <h2 id="010-preview5---2020-12-15">[0.1.0-preview.5] - 2020-12-15</h2>
-<h3 id="added-7">Added</h3>
+<h3 id="added-10">Added</h3>
 <ul>
 <li>Docs: Doxygen + Breathe for API docs</li>
 <li>Docs: Wrote API docs for primary classes</li>
 <li>Makefile: Automated zip archive for builds</li>
-<li>Makefile: Added Unity Tests to build pipeline
-### Modified</li>
+<li>Makefile: Added Unity Tests to build pipeline</li>
+</ul>
+<h3 id="modified-12">Modified</h3>
+<ul>
 <li>Fly Camera script has been modified such that it is no possible
  to disable the automatic clip plane adjustements</li>
 <li>Build Preprocessor populates required shaders in build</li>
@@ -291,35 +338,41 @@ component.</li>
  not loaded. This was intended for debugging issues during development,
  not in a release. A UNITY_GEOSPATIAL_DEBUG define has been added
  to enable or disable this feature. Since new projects do not have
- this define, a black color will be shown instead, by default.
-### Fixed</li>
+ this define, a black color will be shown instead, by default.</li>
+</ul>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
 <li>Fixed bug where a light in b3dm file would cause the application
  to crash.</li>
 <li>Fly Camera script has been fixed such that it is no longer possible
  for the camera to get stuck looking down.</li>
 </ul>
 <h2 id="010-preview4---2020-11-07">[0.1.0-preview.4] - 2020-11-07</h2>
-<h3 id="added-8">Added</h3>
+<h3 id="added-11">Added</h3>
 <ul>
 <li>Docs: Added license file to unitypackage</li>
 <li>Docs: Added license file in root of build product</li>
-<li>Docs: Added page to guide use of multiple layers
-### Modified</li>
+<li>Docs: Added page to guide use of multiple layers</li>
+</ul>
+<h3 id="modified-13">Modified</h3>
+<ul>
 <li>Fly Camera now controls near clip plane and far clip plane automatically</li>
 <li>Refactored some private variables in Fly Camera to match coding standard</li>
 </ul>
 <h2 id="010-preview2---2020-11-03">[0.1.0-preview.2] - 2020-11-03</h2>
-<h3 id="added-9">Added</h3>
+<h3 id="added-12">Added</h3>
 <ul>
 <li>Docs: Screenshots for more explicit documentation</li>
-<li>Docs: How to disable fog in Getting Started
-### Changed</li>
+<li>Docs: How to disable fog in Getting Started</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
 <li>Changed project file structure</li>
 <li>Updated Makefile accordingly</li>
 <li>Built documentation into the Makefile</li>
 </ul>
 <h2 id="010-preview1---2020-11-02">[0.1.0-preview.1] - 2020-11-02</h2>
-<h3 id="added-10">Added</h3>
+<h3 id="added-13">Added</h3>
 <ul>
 <li>Initial release for internal review</li>
 </ul>

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 
 using UnityEditor;
-using UnityEngine;
 
 namespace Unity.Geospatial.HighPrecision.Editor
 {

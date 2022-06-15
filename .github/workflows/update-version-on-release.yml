@@ -46,7 +46,7 @@ jobs:
         id: tag-match
         shell: bash
         run: |
-          if [[ ${{ github.event.ref }} =~ ^refs\/tags\/([rR](elease)?[\.-]?([0-9]+\.[0-9]+\.[0-9]+(-.*\.[0-9])))$ ]]; then
+          if [[ ${{ github.event.ref }} =~ ^refs\/tags\/([rR](elease)?[\.-]?([0-9]+\.[0-9]+\.[0-9]+(-.*\.[0-9])?))$ ]]; then
               echo ::set-output name=tag::${BASH_REMATCH[1]}
               echo ::set-output name=version::${BASH_REMATCH[3]}
               echo TAG = ${BASH_REMATCH[1]}
