@@ -524,8 +524,7 @@ namespace Unity.Geospatial.HighPrecision
                 out quaternion rotation,
                 out float3 scale);
 
-            CachedUnityTransform.position = translation.ToVector3();
-            CachedUnityTransform.rotation = rotation;
+            CachedUnityTransform.SetPositionAndRotation(translation.ToVector3(), rotation); 
 
             // Since scale is impacted by translation and rotation in GetTRS(),
             // we do not directly use scale from GetTRS() to avoid loss of precision in values
