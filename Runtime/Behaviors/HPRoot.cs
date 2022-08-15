@@ -124,7 +124,7 @@ namespace Unity.Geospatial.HighPrecision
         /// <inheritdoc cref="HPNode.UniverseMatrix"/>
         public override double4x4 UniverseMatrix
         {
-            get { return double4x4.identity;; }
+            get { return double4x4.identity; }
         }
 
         /// <inheritdoc cref="HPNode.WorldMatrix"/>
