@@ -39,7 +39,7 @@ jobs:
       - name: Get current date
         id: date
         run: |
-          echo "::set-output name=date::$(date +'%Y-%m-%d')"
+          echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
           echo DATE = $(date +'%Y-%m-%d')
           
       - name: Tag Match
@@ -47,14 +47,14 @@ jobs:
         shell: bash
         run: |
           if [[ ${{ github.event.ref }} =~ ^refs\/tags\/([rR](elease)?[\.-]?([0-9]+\.[0-9]+\.[0-9]+(-.*\.[0-9])?))$ ]]; then
-              echo ::set-output name=tag::${BASH_REMATCH[1]}
-              echo ::set-output name=version::${BASH_REMATCH[3]}
+              echo tag=${BASH_REMATCH[1]} >> $GITHUB_OUTPUT
+              echo version=${BASH_REMATCH[3]} >> $GITHUB_OUTPUT
               echo TAG = ${BASH_REMATCH[1]}
               echo VERSION = ${BASH_REMATCH[3]}
-              echo ::set-output name=rc::rc-${BASH_REMATCH[3]}
+              echo rc=rc-${BASH_REMATCH[3]} >> $GITHUB_OUTPUT
               git tag -l | xargs git tag -d
               git fetch --tags
-              echo ::set-output name=origin::$(git tag -l rc-${BASH_REMATCH[3]})
+              echo origin=$(git tag -l rc-${BASH_REMATCH[3]}) >> $GITHUB_OUTPUT
           fi
           
       - name: Validate Tag
@@ -69,25 +69,25 @@ jobs:
         if: ${{ steps.tag-match.outputs.tag != '' }}
         run: |
           git fetch
-          echo ::set-output name=branch::$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex '^.*origin/develop.*$')
+          echo branch=$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex '^.*origin/develop.*$') >> $GITHUB_OUTPUT
 
       - name: Branch Name Is Other
         id: get-branch-other
         if: ${{ (steps.tag-match.outputs.tag != '') && (steps.get-branch-dev.outputs.branch == '') }}
         run: |
-          echo ::set-output name=branch::$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex 'origin\/[^ H]+' | sed -E 's/.*origin\/([^ ]+).*/\1/')
+          echo branch=$( git branch --contains ${{ steps.tag-match.outputs.tag }} -r | grep --only-matching --max-count 1 --extended-regex 'origin\/[^ H]+' | sed -E 's/.*origin\/([^ ]+).*/\1/') >> $GITHUB_OUTPUT
 
       - name: Get Branch Name
         id: get-branch
         if: ${{ steps.tag-match.outputs.tag != '' }}
         run: |
           if [[ '${{ steps.get-branch-dev.outputs.branch }}' == '' ]]; then
-            echo ::set-output name=branch::${{ steps.get-branch-other.outputs.branch }}
+            echo branch=${{ steps.get-branch-other.outputs.branch }} >> $GITHUB_OUTPUT
           else
-            echo ::set-output name=branch::develop
+            echo branch=develop >> $GITHUB_OUTPUT
           fi
-          echo ::set-output name=changelog::changelog-${{ steps.tag-match.outputs.version }}
-          echo ::set-output name=staging::staging-${{ steps.tag-match.outputs.version }}
+          echo changelog=changelog-${{ steps.tag-match.outputs.version }} >> $GITHUB_OUTPUT
+          echo staging=staging-${{ steps.tag-match.outputs.version }} >> $GITHUB_OUTPUT
 
       - name: Changelog branch
         if: ${{ steps.get-branch.outputs.branch == 'develop' }}
@@ -118,7 +118,7 @@ jobs:
         id: pr-changelog
         if: ${{ steps.get-branch.outputs.branch == 'develop' }}
         run: |
-          echo ::set-output name=number::$(curl -i \
+          echo number=$(curl -i \ >> $GITHUB_OUTPUT
           --request POST \
           --header 'authorization: bearer ${{ secrets.GITHUB_TOKEN }}' \
           --header 'content-type: application/json' \
@@ -137,7 +137,7 @@ jobs:
         id: approve-changelog
         if: ${{ steps.get-branch.outputs.branch == 'develop' }}
         run: |
-          echo ::set-output name=approved::$(curl --request POST \
+          echo approved=$(curl --request POST \ >> $GITHUB_OUTPUT
           --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-changelog.outputs.number }}/reviews \
           --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
           --header 'content-type: application/json' \
@@ -160,7 +160,7 @@ jobs:
         id: push-develop
         if: ${{ steps.get-branch.outputs.branch == 'develop' }}
         run: |
-          echo ::set-output name=success::$(curl --request PUT \
+          echo success=$(curl --request PUT \ >> $GITHUB_OUTPUT
           --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-changelog.outputs.number }}/merge \
           --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
           --header 'content-type: application/json' \
@@ -213,7 +213,7 @@ jobs:
         id: pr-master
         if: ${{ steps.tag-match.outputs.tag != '' }}
         run: |
-          echo ::set-output name=number::$(curl -i \
+          echo number=$(curl -i \ >> $GITHUB_OUTPUT
           --request POST \
           --header "authorization: bearer ${{ secrets.GITHUB_TOKEN }}" \
           --header 'content-type: application/json' \
@@ -232,7 +232,7 @@ jobs:
         id: approve-master
         if: ${{ steps.tag-match.outputs.tag != '' }}
         run: |
-          echo ::set-output name=approved::$(curl --request POST \
+          echo approved=$(curl --request POST \ >> $GITHUB_OUTPUT
           --url https://github.cds.internal.unity3d.com/api/v3/repos/${{ github.repository }}/pulls/${{ steps.pr-master.outputs.number }}/reviews \
           --header 'authorization: bearer ${{ secrets.GIT_TOKEN_APPROVAL }}' \
           --header 'content-type: application/json' \
