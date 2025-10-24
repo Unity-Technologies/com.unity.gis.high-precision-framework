@@ -22,7 +22,7 @@ permissions:
 
 jobs:
   update_and_push:
-    runs-on: [ self-hosted, linux ]
+    runs-on: unity-linux-runner
 
     steps:
       - uses: actions/checkout@v2
